@@ -18,3 +18,20 @@ function fillDinoList () {
   }
   console.log('Lista de Dinossauros criada!')
 }
+
+setTimeout(() => {
+  fillDinoList()
+  controls.dispatch('jump')
+}, 1000)
+
+setInterval(() => {
+  if (!game.activated) return
+
+  const dino = dinoList[dinoIndex]
+
+  if (game.crashed) {
+    if(dino.score > bestScore) {
+      bestScore = dino.score
+    }
+  }
+})
